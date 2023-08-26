@@ -1,13 +1,15 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import Page from './Page';
+import { BrowserRouter,Link,Route,Routes } from 'react-router-dom';
+import Home from './Home';
 
 
 function Championnat(props) {
     const [elements,setElements]=useState([]);
     const [equipes,setEquipes]=useState([]);
     const [currentPage,setCurrentPage]=useState(1);
-    const [eleparPage,seteleparPage]=useState(10);
+    const [eleparPage,seteleparPage]=useState(20);
    
     useEffect(()=>{
         axios.get("http://localhost:8082/League/"+props.league).then((data)=>{
@@ -23,7 +25,7 @@ function Championnat(props) {
     return (
 
         <div className='container-sm '>
-          <div className='card-header font-weight-light overflow-y-scroll'>
+          <div className='row p-1 border border-info'>
               <h1 className="">{props.league}</h1> 
           </div>
           
@@ -34,27 +36,31 @@ function Championnat(props) {
                 return (
                   
 
-                    <div className="w-75 px-2 text-center">
-                    <div className="row p-2 mb-1 "  key={i}>
-                      <div className="col-1">
-                      <div class=" shadow-lg bg-body-tertiary rounded">{i+1}</div>
-                      </div>
-                      <div className="col-3">
-                        <div className=" shadow-lg  bg-body-tertiary rounded ">{item}</div>
-                      </div>
-                     
+                    <div className=" text-center ">
+                    <div className="row p-1 mb-1 border border-info"  key={i}>
+                      
+                    <ul className='nav na-pills'>
+                    <li className='w-75 h-100'><button onClick={()=>{<Home nameUn={item}/>}} className='btn btn-primary w-100 h-100'>{item}</button> 
+                     </li>
+                     </ul>
                     </div>
                    
                     </div>
+                    
             
         );
-      })}
+        
+      }
+      
+      
+       ) }
    
    <Page totalEquipe={equipes.length} elementParPage={eleparPage} paginate={currentPage}></Page> 
        
-   
+  
         </div>
     );
+    
 }
 
 export default Championnat;

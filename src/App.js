@@ -52,16 +52,16 @@ function App() {
           </nav>
         </nav>
       <Routes>
-        <Route path='/League/bundesliga' element={<Championnat league="bundesliga"/>}></Route>
-        <Route path='/League/liga' element={<Championnat league="liga"/>}></Route>
-        <Route path='/League/Premier-league' element={<Championnat league="Premier-league"/>}></Route>
-        <Route path='/League/serie-a' element={<Championnat league="serie-a"/>}></Route>
-        <Route path='/League/Ligue-1' element={<Championnat league="ligue-1"/>}></Route>
-        <Route path='/League/Portugal' element={<Championnat league="portugal"/>}></Route>
-        <Route path='/League/Belgique' element={<Championnat league="belgique"/>}></Route>
-        <Route path='/League/Suisse' element={<Championnat league="suisse"/>}></Route>
-        <Route path='/League/Turquie' element={<Championnat league="turquie"/>}></Route>
-        <Route path='/League/Pays-Bas' element={<Championnat league="pays-bas"/>}></Route>
+        <Route path='/League/bundesliga' element={<Home league="bundesliga"/>}></Route>
+        <Route path='/League/liga' element={<Home league="liga"/>}></Route>
+        <Route path='/League/Premier-league' element={<Home league="Premier-league"/>}></Route>
+        <Route path='/League/serie-a' element={<Home league="serie-a"/>}></Route>
+        <Route path='/League/Ligue-1' element={<Home league="ligue-1"/>}></Route>
+        <Route path='/League/Portugal' element={<Home league="portugal"/>}></Route>
+        <Route path='/League/Belgique' element={<Home league="belgique"/>}></Route>
+        <Route path='/League/Suisse' element={<Home league="suisse"/>}></Route>
+        <Route path='/League/Turquie' element={<Home league="turquie"/>}></Route>
+        <Route path='/League/Pays-Bas' element={<Home league="pays-bas"/>}></Route>
         <Route path='/next' element={<Home league="pays-bas"/>}></Route>
       </Routes>
     </BrowserRouter>      

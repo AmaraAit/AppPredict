@@ -9,19 +9,21 @@ function EquipeStat(props) {
             setInfo(data?.data);
         })
     },[]);
-    handlclick(){
-       
-    }
+   
       
-    }
+    
     return (
         <div className='border border-inline-dark'>
-            <div class="progress" role="progressbar" aria-label="Success example" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
-             <div class="progress-bar bg-success" style="width: 25%">25%</div>
-            </div>
+            {info.map((inf,i) =>{
+                <div  key={i} className="progress" role="progressbar" aria-label="Success example" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                <h1>{inf.name}</h1>
+                <div className="progress-bar bg-success" style={"width:"+inf.numberMatch+"%"}>25%</div>
+               </div>
+            })}
+            
 
         </div>
     );
 
-
+    }
 export default EquipeStat;

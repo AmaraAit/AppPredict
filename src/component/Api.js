@@ -6,17 +6,19 @@ import EquipeStat from './EquipeStat';
 
 function Api(props) {
     const [match,setMatch]=useState([]);
+    const [loading,setloading]=useState(false);
     useEffect(() => {
         axios.get("http://localhost:8082/nextMatch").then((res) => {
           
           setMatch(res?.data);
-         
+          setloading(true);
         });
       }, []);
       const dateformat=dayjs()
     return (
-        <div className='table border '>
-            <table className="table w-100">
+        <div className='table '>
+          {loading ?  
+            <table className="table  border border-info">
                 <thead>
                   <tr>
                     <th scope="col">#</th>
@@ -28,13 +30,13 @@ function Api(props) {
                 <tbody>
                 {match.map((item, i) => {
                 return (
-                  
-                        <tr key={i} className='border rounded'>
-                            <th scope="row"><button type="button" className="btn-outline-info">{i}</button></th>
+                        
+                        <tr key={i} className='border rounded border-info' >
+                            <th scope="row">{i}</th>
                             <td><div className="border rounded">{item.nameUn}</div></td>
                             <td><div className="border rounded">{dayjs(item.date).format("DD/MM/YYYY")}</div></td>
                             <td><div className="border rounded">{item.nameDeux}</div></td>
-                            <td><button type="button" onClick={()=>{EquipeStat(item.nameUn)}} className="btn-outline-info  border rounded">verifier</button></td>
+                            <td><button type="button" onClick={()=>EquipeStat} className="btn btn-success w-75 btn-sm border rounded">{item.comment}</button></td>
                       </tr>
                 );})
                   }
@@ -42,6 +44,10 @@ function Api(props) {
                  
                 </tbody>
               </table>
+              :<div class="spinner-border text-primary" role="status">
+              <span class="visually-hidden">Loading...</span>
+            </div>
+              }
         </div>
     );
 }
